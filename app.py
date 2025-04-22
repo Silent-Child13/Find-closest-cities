@@ -1,9 +1,11 @@
-import csv
-from fuzzywuzzy import process
-import transliterate
-from googletrans import Translator
 import asyncio
+import csv
+
+import transliterate
+from fuzzywuzzy import process
 from geopy.distance import geodesic
+from googletrans import Translator
+
 
 def read_world_cities():
     data = []
