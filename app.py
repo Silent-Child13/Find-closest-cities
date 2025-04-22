@@ -42,19 +42,17 @@ def find_closest_cities(base_city, cities, max_distance):
             list_of_cities.append({"city_name": city['city'], 'distance_from_base': distance})
     return list_of_cities
 
-def find_city(word, language):
+def find_city(word):
     data = read_world_cities()
-    best_match = process.extractOne(asyncio.run(translate_to_language(word, language)), [entry['city'] for entry in data])[0]
-    print(best_match)
+    best_match = process.extractOne(asyncio.run(translate_to_language(word)), [entry['city'] for entry in data])[0]
     for entry in data:
         if best_match == entry['city']:
             return entry, data
     return None
 
 word = 'Букурещ'
-language = 'en'
 distance = 20
-base_city, data = find_city(word, language)
+base_city, data = find_city(word)
 if base_city:
     print(f'Oraș introdus {word}')
     print(f'Oraș corectat {base_city['admin_name']}')
