@@ -44,14 +44,15 @@ def find_closest_cities(base_city, cities, max_distance):
 
 def find_city(word, language):
     data = read_world_cities()
-    best_match = process.extractOne(asyncio.run(translate_to_language(word, language)), [entry['admin_name'] for entry in data])[0]
+    best_match = process.extractOne(asyncio.run(translate_to_language(word, language)), [entry['city'] for entry in data])[0]
+    print(best_match)
     for entry in data:
-        if best_match == entry['admin_name']:
+        if best_match == entry['city']:
             return entry, data
     return None
 
 word = 'Букурещ'
-language = 'ro'
+language = 'en'
 distance = 20
 base_city, data = find_city(word, language)
 if base_city:
